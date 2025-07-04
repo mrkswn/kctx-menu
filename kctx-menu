@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# File: kctx-menu
+# Description: Interactive picker for kubeconfig contexts
+
+set -euo pipefail
+
+# Fetch context names
+mapfile -t contexts < <(kubectl config get-contexts -o name)
+
+# Exit if no contexts found
+if (( ${#contexts[@]} == 0 )); then
+  echo "No contexts found in your kubeconfig" >&2
+  exit 1
+fi
+
+# Print a numbered list
+echo "Available contexts:"
+for i in "${!contexts[@]}"; do
+  printf "  [%d] %s\n" "$((i+1))" "${contexts[$i]}"
+done
+
+# Prompt for a number
+while :; do
+  read -rp $'\nChoose a context by number: ' choice
+  [[ $choice =~ ^[0-9]+$ ]] || { echo "⟹ Enter a number"; continue; }
+  index=$((choice-1))
+  [[ $index -ge 0 && $index -lt ${#contexts[@]} ]] || { echo "⟹ Out of range"; continue; }
+  break
+done
+
+# Switch and confirm
+ctx="${contexts[$index]}"
+kubectl config use-context "$ctx"
+echo "✅  Now using context: $ctx"
