@@ -27,5 +27,5 @@ echo 'alias km="kctx-menu"' >> ~/.bashrc     # or ~/.zshrc
 source ~/.bashrc
 
 # Usage
-km     # or kctx-menu
+km
 ```
