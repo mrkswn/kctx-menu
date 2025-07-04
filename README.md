@@ -11,7 +11,6 @@ Available contexts:
 
 Choose a context by number: 2
 Switched to "arn:aws:eks:us-west-2:123456789012:cluster/staging".
-✅  Now using context: arn:aws:eks:us-west-2:123456789012:cluster/staging
 ```
 ## Installation
 
