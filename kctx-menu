@@ -28,7 +28,6 @@ while :; do
   break
 done
 
-# Switch and confirm
+# Switch context
 ctx="${contexts[$index]}"
 kubectl config use-context "$ctx"
-echo "✅  Now using context: $ctx"
