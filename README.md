@@ -1,6 +1,6 @@
 # `kctx-menu`
 
-Bash helper that lists each Kubernetes context in your `kubeconfig` and lets you switch by entering a corresponding number.
+Bash helper that lists each Kubernetes context in your `kubeconfig` and lets you switch by entering the corresponding number.
 
 ```
 Available contexts:
